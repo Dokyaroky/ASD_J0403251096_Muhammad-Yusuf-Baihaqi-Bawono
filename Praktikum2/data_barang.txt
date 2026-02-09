@@ -1,0 +1,72 @@
+BRG001,Samsung Galaxy A15 Hitam,12
+BRG002,Oppo A38 Biru,8
+BRG003,Redmi 12 Abu-abu,15
+BRG004,Laptop HP Pavilion 14 Silver,6
+BRG005,Laptop Asus TUF Gaming 15,4
+BRG006,Pulpen Faster Biru,100
+BRG007,Pulpen Faster Hitam,120
+BRG008,Buku Tulis A4 Kyokuto,75
+BRG009,Pensil 2B Staedtler,90
+BRG010,Stabilo Zebra Kuning,45
+BRG011,Indomie Goreng,200
+BRG012,Indomie Kari Ayam,180
+BRG013,Aqua Air Mineral 600ml,250
+BRG014,Teh Botol Sosro 350ml,140
+BRG015,Susu Bendera Coklat,60
+BRG016,Kaos Adidas XL,18
+BRG017,Kaos Nike L,22
+BRG018,Jeans Levis Ukuran 32,10
+BRG019,Jaket Puma M,7
+BRG020,Hoodie Uniqlo L,9
+BRG021,Palu Besi 2kg,14
+BRG022,Obeng Set Stanley,11
+BRG023,Tang Kombinasi,13
+BRG024,Gergaji Besi,5
+BRG025,Bor Tangan Manual,4
+BRG026,Mouse Logitech M185,30
+BRG027,Keyboard Logitech K120,25
+BRG028,Flashdisk Sandisk 32GB,40
+BRG029,Harddisk Eksternal WD 1TB,10
+BRG030,Headset JBL Tune 110,20
+BRG031,Powerbank Xiaomi 10000mAh,18
+BRG032,Charger USB Anker 20W,22
+BRG033,Kabel Data USB-C Baseus,35
+BRG034,Router TP-Link TL-WR840N,9
+BRG035,Printer Canon IP2770,6
+BRG036,Tinta Printer Canon Black,50
+BRG037,Kertas HVS A4 80gsm,100
+BRG038,Map Plastik Bening,70
+BRG039,Spidol Snowman Hitam,60
+BRG040,Correction Pen Joyko,45
+BRG041,Snack Chitato Sapi Panggang,90
+BRG042,Biskuit Roma Kelapa,110
+BRG043,Wafer Tango Coklat,95
+BRG044,Coklat SilverQueen Almond,40
+BRG045,Permen Kopiko,150
+BRG046,Minyak Goreng Bimoli 1L,55
+BRG047,Gula Pasir Gulaku 1kg,48
+BRG048,Beras Ramos 5kg,20
+BRG049,Telur Ayam Negeri 1kg,35
+BRG050,Mie Sedaap Goreng,170
+BRG051,Kaos Polos Hitam L,25
+BRG052,Kaos Polos Putih M,28
+BRG053,Jaket Hoodie Abu-abu XL,12
+BRG054,Topi Baseball Hitam,18
+BRG055,Tas Ransel Eiger 25L,7
+BRG056,Sandal Jepit Swallow,40
+BRG057,Sepatu Converse All Star 42,9
+BRG058,Kaos Kaki Putih,60
+BRG059,Ikat Pinggang Kulit Coklat,14
+BRG060,Jaket Jeans Biru L,8
+BRG061,Obeng Minus 5mm,20
+BRG062,Obeng Plus 6mm,18
+BRG063,Tang Potong 6 Inch,15
+BRG064,Kunci Inggris 10 Inch,10
+BRG065,Kunci L Set,12
+BRG066,Gergaji Kayu 18 Inch,6
+BRG067,Palu Karet,9
+BRG068,Amplas Kayu Halus,50
+BRG069,Lem Kayu Fox,30
+BRG070,Cutter Besar Joyko,25
+BRG071,Rumah,15
+BRG072,Mobil,17

@@ -1,148 +1,164 @@
-#=================================================
-# Praktikum 2: Konsep ADT dan File Handling (STUDI KASUS)
-# Latihan   2: Membuat fungsi Load Data dari File
-# =================================================
+# ==========================================================
+# TUGAS HANDS-ON MODUL 1
+# Studi Kasus: Sistem Stok Barang Kantin (Berbasis File .txt)
+#
+# Nama : Muhammad Yusuf Baihaqi Bawono
+# NIM : J0403251096
+# Kelas : A1
+# ==========================================================
 
-#variable menyimpan data file
-nama_file = "data_mahasiswa.txt"
+# -------------------------------
+# Konstanta nama file
+# -------------------------------
+from ast import main
 
-def baca_data(nama_file):
-    data_dict = {}
-    with open(nama_file,"r",encoding="utf-8") as file:
+
+from ast import main
+
+
+NAMA_FILE = "Praktikum2/data_barang.txt"
+
+# -------------------------------
+# Fungsi: Membaca data dari file
+# -------------------------------
+
+def baca_stok(NAMA_FILE):
+    stok_dict = {}
+    with open(NAMA_FILE, "r", encoding="utf-8") as file:
         for baris in file:
             baris = baris.strip()
-            NIM,nama,nilai = baris.split(",")
-            data_dict[NIM] = {"nama": nama, "nilai": int(nilai)}
-    return data_dict
+        # Lewati baris kosong
+            if baris == "":
+                continue
+            data_barang = baris.split(",")   
 
-buka_data = baca_data(nama_file)
-print("jumlah data terbaca", len(buka_data))
+            kode, nama, stok = data_barang
+            try:
+                stok_int = int(stok)
+            except ValueError:
+                continue
+            stok_dict[kode] = {"nama": nama, "stok": stok_int}
+    return stok_dict
 
-#=================================================
-# Praktikum 2: Konsep ADT dan File Handling (STUDI KASUS)
-# Latihan   2: Membuat Fungsi Menamilkan Data
-# =================================================
+buka_data = baca_stok(NAMA_FILE)
 
-def tampilkan_data(data_dict):
-    #Membuat header tabel
-    print("\n=== Daftar Mahasiswa ===")
-    print(f"{'NIM' : <10} | {'Nama' : <12} | {'Nilai' : >5}")
-    '''
-    untuk tampilan yang rapi, atur lebar kolom
-    {'NIM' : <10} artinya nim rata kiri dengan lebar kolom 10 karakter
-    {'Nama' : <12} artinya nama rata kiri dengan lebar kolom 12 karakter
-    {'Nilai' : >5} artinya nilai rata kanan dengan lebar kolom 5 karakter
-    '''
-    print("-"*35) #membuat garis 
+# -------------------------------
+# Fungsi: Menampilkan semua data
+# -------------------------------
+def tampilkan_semua(stok_dict):
+    print("\n=== Daftar Barang ===")
+    print(f"{'Kode' : <8} | {'Nama' : <30} | {'Stok' : >7}")
+    print("-"*51)
+    for kode in sorted(stok_dict.keys()):
+        nama = stok_dict[kode]["nama"]
+        stok = stok_dict[kode]["stok"]
+        print(f"{kode : <8} | {nama : <30} | {stok : >7}")
 
-    for nim in sorted(data_dict.keys()):
-        nama = data_dict[nim]["nama"]
-        nilai = data_dict[nim]["nilai"]
-        print(f"{nim : <10} | {nama : <12} | {nilai : >5}")
+    if len(stok_dict) == 0:
+        print("Tidak ada data barang tersedia.")
 
-#tampilkan_data(buka_data) #memanggil fungsi untuk menampilkan data
-
-#=================================================
-# Praktikum 2: Konsep ADT dan File Handling (STUDI KASUS)
-# Latihan   3: Membuat Fungsi Mencari Data
-# =================================================
-
-#membuat fungsi pencarian data
-def cari_data(data_dict):
-    #pencarian data berdasarkan NIM sebagai key dictionary
-    #membuat input NIM mahasiswa yang akan dicari
-    nim_cari = input("\nMasukkan NIM yang ingin dicari: ").strip()
-
-    if nim_cari in data_dict:
-        nama =  data_dict[nim_cari]["nama"]
-        nilai = data_dict[nim_cari]["nilai"]
-
-        print("===== Data Mahasiswa Ditemukan =====")
-        print(f"NIM  : {nim_cari}")
-        print(f"Nama : {nama}")
-        print(f"Nilai: {nilai}")
+# -------------------------------
+# Fungsi: Cari barang berdasarkan kode
+# -------------------------------
+def cari_barang(stok_dict):
+    kode_cari = input("\nMasukkan kode barang yang ingin dicari: ").strip()
+    if kode_cari in stok_dict:
+        nama = stok_dict[kode_cari]["nama"]
+        stok = stok_dict[kode_cari]["stok"]
+        print(f"\n===Barang ditemukan===\nKode: {kode_cari}, \nNama: {nama}, \nStok: {stok}")
     else:
-        print("Data tidak ditemukan. Pastikan NIM yang dimasukkan benar.")
+        print("Barang dengan kode tersebut tidak ditemukan.")
 
-#memanggil fugnsi cari data
-#cari_data(buka_data)
-
-#=================================================
-# Praktikum 2: Konsep ADT dan File Handling (STUDI KASUS)
-# Latihan   4: Membuat Fungsi Update Data
-# =================================================
-
-def ubah_data(data_dict):
-    
-    #awali dulu dengan mencari nim / data yang ingin di update
-
-    nim = input("\nMasukkan NIM yang ingin diubah datanya: ").strip()
-
-    if nim not in data_dict:
-        print("NIM tidak ditemukan. Update dibatalkan.")
-        return
-    
-    try:
-        nilai_baru = int(input("Masukkan nilai baru 0-100: ").strip())
-    except ValueError:
-        print("Nilai harus berupa angka. Update dibatalkan.")
-    
-    if nilai_baru < 0 or nilai_baru > 100:
-        print("Nilai harus antara 0-100. Update dibatalkan.")
-
-    nilai_lama =  data_dict[nim]["nilai"]
-    data_dict[nim]["nilai"] = nilai_baru
-
-#ubah_data(buka_data) 
-#=================================================
-# Praktikum 2: Konsep ADT dan File Handling (STUDI KASUS)
-# Latihan   5: Membuat Fungsi Menyimpan Data dalam FIle
-# =================================================
-
-def simpan_data(nama_file, data_dict):
-    with open(nama_file,"w",encoding="utf-8") as file:
-        for nim in sorted(data_dict.keys()):
-            nama = data_dict[nim]["nama"]
-            nilai = data_dict[nim]["nilai"]
-            file.write(f"{nim},{nama},{nilai}\n")
-            print("\nData Berhasil Disimpan ke file: ", nama_file)
-
-#memanggil fungsi simpan data
-#simpan_data(nama_file, buka_data)
-
-
-#=================================================
-# Praktikum 2: Konsep ADT dan File Handling (STUDI KASUS)
-# Latihan   6: Membuat Menu Interaktif
-# =================================================
-
-def main():
-    #load data otomoatis saat program dimulai
-    buka_data = baca_data(nama_file)
-
+# -------------------------------
+# Fungsi: Tambah barang baru
+# -------------------------------
+def tambah_barang(stok_dict):
     while True:
-        print("\n=== Menu Utama ===")
-        print("1. Tampilkan Data Mahasiswa")
-        print("2. Cari Data Bedasarkan NIM")
-        print("3. Ubah Nilai Mahasiswa")
-        print("4. Simpan data ke File")
-        print("5. Keluar")
-
-        pilihan = input("Pilih menu: ").strip()
-
-        if pilihan == "1":
-            tampilkan_data(buka_data)
-        elif pilihan == "2":
-            cari_data(buka_data)
-        elif pilihan == "3":
-            ubah_data(buka_data)
-        elif pilihan == "4":
-            simpan_data(nama_file, buka_data)
-        elif pilihan == "5":
-            print("Program selesai.")
-            break
+        kode = input("\nMasukkan kode barang baru: ").strip()
+        if kode in stok_dict:
+            print("\nKode barang sudah ada. Gunakan fungsi update stok untuk menambah stok.")
         else:
-            print("Pilihan tidak valid. Silakan coba lagi.")
+            break
+    nama = input("Masukkan nama barang: ").strip()
+    while True:
+        try:
+            stok = int(input("Masukkan stok awal barang: ").strip())
+            break
+        except ValueError:
+            print("Stok harus berupa angka. Silakan coba lagi.")
+    stok_dict[kode] = {"nama": nama, "stok": stok}
+    print("\nBarang baru berhasil ditambahkan.")
 
+# -------------------------------
+# Fungsi: Update stok barang
+# -------------------------------
+def update_stok(stok_dict):
+    kode = input("\nMasukkan kode barang yang stoknya ingin diupdate: ").strip()
+    
+
+    if kode in stok_dict:
+        while True:
+            try:
+                print(f"Nama barang: {stok_dict[kode]['nama']}\n Stok: {stok_dict[kode]['stok']}")
+                print("\n=== Update Stok Barang ===\n1. Tambah Stok\n2. Kurangi Stok")
+                update_stok = int(input("Pilih opsi: ").strip())
+                while True:
+                    tambahan_stok = int(input("\nMasukkan jumlah stok yang akan ditambahkan/kurangi: ").strip())
+                    if update_stok == 2:
+                        tambahan_stok = -tambahan_stok
+                    if stok_dict[kode]["stok"] + tambahan_stok < 0:
+                        print("Stok tidak bisa negatif. Silakan coba lagi.")
+                        continue
+                    else:
+                        stok_dict[kode]["stok"] += tambahan_stok
+                        print("Stok barang berhasil diperbarui.")
+                        print(f"Stok baru: {stok_dict[kode]['stok']}")
+                        return
+            except ValueError:
+                print("Jumlah stok harus berupa angka. Silakan coba lagi.")
+        
+    else:
+        print("Barang dengan kode tersebut tidak ditemukan.")
+
+# -------------------------------
+# Fungsi: Menyimpan data ke file
+# -------------------------------
+def simpan_stok(nama_file, stok_dict):
+    with open(nama_file, "w", encoding="utf-8") as file:
+        for kode in stok_dict:
+            nama = stok_dict[kode]["nama"]
+            stok = stok_dict[kode]["stok"]
+            file.write(f"{kode},{nama},{stok}\n")
+        print("\nData berhasil disimpan.")
+# -------------------------------
+# Program Utama
+# -------------------------------
+def main():
+ # Membaca data dari file saat program mulai
+ stok_barang = baca_stok(NAMA_FILE)
+ while True:
+    print("\n=== MENU STOK KANTIN ===")
+    print("1. Tampilkan semua barang")
+    print("2. Cari barang berdasarkan kode")
+    print("3. Tambah barang baru")
+    print("4. Update stok barang")
+    print("5. Simpan ke file")
+    print("0. Keluar")
+    pilihan = input("Pilih menu: ").strip()
+    if pilihan == "1":
+        tampilkan_semua(stok_barang)
+    elif pilihan == "2":
+        cari_barang(stok_barang)
+    elif pilihan == "3":
+        tambah_barang(stok_barang)
+    elif pilihan == "4":
+        update_stok(stok_barang)
+    elif pilihan == "5":
+        simpan_stok(NAMA_FILE, stok_barang)
+    elif pilihan == "0":
+        print("\nProgram selesai.")
+        break
+
+# Menjalankan program utama
 if __name__ == "__main__":
     main()

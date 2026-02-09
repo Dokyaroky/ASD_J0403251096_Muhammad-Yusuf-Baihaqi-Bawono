@@ -18,6 +18,7 @@ def baca_data(nama_file):
 buka_data = baca_data(nama_file)
 print("jumlah data terbaca", len(buka_data))
 
+
 #=================================================
 # Praktikum 2: Konsep ADT dan File Handling (STUDI KASUS)
 # Latihan   2: Membuat Fungsi Menamilkan Data
