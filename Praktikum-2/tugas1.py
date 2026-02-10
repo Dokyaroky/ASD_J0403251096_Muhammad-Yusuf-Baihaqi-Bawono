@@ -16,7 +16,7 @@ from ast import main
 from ast import main
 
 
-NAMA_FILE = "Praktikum2/data_barang.txt"
+NAMA_FILE = "Praktikum-2/data_barang.txt"
 
 # -------------------------------
 # Fungsi: Membaca data dari file
